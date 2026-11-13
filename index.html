@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>한중다리 (韩中桥) - 한중 언어교환 동아리</title>
+  <style>
+    /* CSS Reset & 基础样式 */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Malgun Gothic", "Noto Sans KR", "Microsoft YaHei", sans-serif;
+      line-height: 1.6;
+      color: #333333;
+      background-color: #f7f9fc;
+      padding-bottom: 60px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* 标题下方小字翻译的公用类 */
+    .sub-trans {
+      display: block;
+      font-size: 0.85rem;
+      color: #666666;
+      font-weight: normal;
+      margin-top: 4px;
+    }
+
+    /* 顶部 Hero 区域 */
+    header {
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+      color: #ffffff;
+      text-align: center;
+      padding: 50px 20px;
+      border-radius: 0 0 20px 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      margin-bottom: 40px;
+    }
+
+    header h1 {
+      font-size: 2.4rem;
+      margin-bottom: 5px;
+      letter-spacing: 1px;
+    }
+
+    header .club-sub-trans {
+      color: #d8e3f8;
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+
+    .intro-box {
+      background: rgba(255, 255, 255, 0.12);
+      display: inline-block;
+      padding: 14px 24px;
+      border-radius: 30px;
+      backdrop-filter: blur(5px);
+    }
+
+    .intro-kr {
+      font-size: 1.15rem;
+      font-weight: 500;
+    }
+
+    .intro-cn {
+      color: #d1e0ff;
+      font-size: 0.9rem;
+      margin-top: 4px;
+    }
+
+    /* 内容板块公用样式 */
+    section {
+      margin-bottom: 45px;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .section-header h2 {
+      font-size: 1.6rem;
+      color: #1e3c72;
+    }
+
+    /* 1. 活动卡片网格 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      border-top: 4px solid #2a5298;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .card h3 {
+      font-size: 1.25rem;
+      color: #222222;
+      margin-bottom: 4px;
+    }
+
+    .card p.desc {
+      margin-top: 15px;
+      font-size: 0.95rem;
+      color: #555555;
+    }
+
+    /* 2. 日程表格 */
+    .table-container {
+      background: #ffffff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    thead {
+      background-color: #f0f4fa;
+    }
+
+    th {
+      padding: 16px 20px;
+      color: #1e3c72;
+      font-weight: 600;
+      border-bottom: 2px solid #e2e8f0;
+      font-size: 1rem;
+    }
+
+    th .th-sub {
+      display: block;
+      font-size: 0.8rem;
+      color: #64748b;
+      font-weight: normal;
+      margin-top: 2px;
+    }
+
+    td {
+      padding: 16px 20px;
+      border-bottom: 1px solid #edf2f7;
+      color: #444444;
+      font-size: 0.95rem;
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    tbody tr:hover {
+      background-color: #fcfdfe;
+    }
+
+    /* 3. 底部咨询区域与按钮 */
+    .inquiry-section {
+      text-align: center;
+      margin-top: 50px;
+      padding: 30px 20px;
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .inquiry-btn {
+      background-color: #e65100;
+      color: #ffffff;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 30px;
+      padding: 14px 36px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(230, 81, 0, 0.25);
+      transition: background-color 0.2s ease, transform 0.1s ease;
+    }
+
+    .inquiry-btn:hover {
+      background-color: #d84315;
+      transform: scale(1.02);
+    }
+
+    .inquiry-btn:active {
+      transform: scale(0.98);
+    }
+
+    .inquiry-btn .btn-sub {
+      font-size: 0.85rem;
+      font-weight: normal;
+      opacity: 0.9;
+      margin-left: 4px;
+    }
+
+    .inquiry-result {
+      display: none;
+      margin-top: 22px;
+      padding: 16px 20px;
+      background-color: #fff8e1;
+      border: 1px solid #ffe082;
+      border-radius: 10px;
+      color: #d84315;
+      font-size: 1rem;
+      font-weight: 500;
+      animation: fadeIn 0.3s ease-in-out forwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    footer {
+      text-align: center;
+      color: #888888;
+      font-size: 0.85rem;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 头部介绍区 -->
+  <header>
+    <div class="container">
+      <h1>한중다리</h1>
+      <span class="sub-trans club-sub-trans">韩中桥</span>
+
+      <div class="intro-box">
+        <p class="intro-kr">한국어와 중국어를 서로 가르치며 함께 성장합니다</p>
+        <p class="sub-trans intro-cn">互教韩语和中文，共同成长</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- 活动卡片展示区 -->
+    <section>
+      <div class="section-header">
+        <h2>동아리 주요 활동</h2>
+        <span class="sub-trans">社团主要活动</span>
+      </div>
+
+      <div class="card-grid">
+        <!-- 卡片 1 -->
+        <div class="card">
+          <h3>주간 언어교환</h3>
+          <span class="sub-trans">每周语言交换</span>
+          <p class="desc">
+            매주 정기 모임을 통해 1:1 대화 및 그룹 프리토킹으로 자연스러운 회화 실력을 키웁니다.
+            <span class="sub-trans">通过每周定期例会，以 1:1 或小组自由会话的形式提升口语表达能力。</span>
+          </p>
+        </div>
+
+        <!-- 卡片 2 -->
+        <div class="card">
+          <h3>전공 과제 스터디</h3>
+          <span class="sub-trans">专业作业学习小组</span>
+          <p class="desc">
+            전공 과제, 레포트 교정, 수업 발표 준비를 서로 도우며 학업 경쟁력을 함께 높입니다.
+            <span class="sub-trans">互相协助专业课作业、润色报告并准备课堂发表，携手提升学业水平。</span>
+          </p>
+        </div>
+
+        <!-- 卡片 3 -->
+        <div class="card">
+          <h3>문화 체험 행사</h3>
+          <span class="sub-trans">文化体验活动</span>
+          <p class="desc">
+            전통 음식 만들기, 명절 맞이 축제 등 양국의 다채로운 문화를 직접 체험하고 교류합니다.
+            <span class="sub-trans">制作传统美食、共度传统节日，亲身体验并交流两国的丰富文化。</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 本月日程表格区 -->
+    <section>
+      <div class="section-header">
+        <h2>이번 달 활동 일정</h2>
+        <span class="sub-trans">本月活动日程</span>
+      </div>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>
+                날짜
+                <span class="th-sub">日期</span>
+              </th>
+              <th>
+                활동
+                <span class="th-sub">活动</span>
+              </th>
+              <th>
+                장소
+                <span class="th-sub">地点</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                11월 18일 (수)
+                <span class="sub-trans">11月18日（周三）</span>
+              </td>
+              <td>
+                정기 언어교환 모임
+                <span class="sub-trans">定期语言交换活动</span>
+              </td>
+              <td>
+                학생회관 302호 세미나실
+                <span class="sub-trans">学生活动中心 302研讨室</span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                11월 22일 (일)
+                <span class="sub-trans">11月22日（周日）</span>
+              </td>
+              <td>
+                전공 과제 & 발표 스터디
+                <span class="sub-trans">专业作业与课业发表小组</span>
+              </td>
+              <td>
+                중앙도서관 그룹 스터디룸 B
+                <span class="sub-trans">中央图书馆小组自习室 B</span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                11월 28일 (토)
+                <span class="sub-trans">11月28日（周六）</span>
+              </td>
+              <td>
+                한중 전통 음식 문화 교류회
+                <span class="sub-trans">韩中传统美食文化交流会</span>
+              </td>
+              <td>
+                국제교류센터 오픈 키친
+                <span class="sub-trans">国际交流中心开放厨房</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 底部入会咨询按钮与交互区 -->
+    <div class="inquiry-section">
+      <button id="inquiryBtn" class="inquiry-btn" type="button">
+        가입 문의 <span class="btn-sub">/ 入会咨询</span>
+      </button>
+
+      <!-- 点击后展示的消息框 -->
+      <div id="inquiryMessage" class="inquiry-result" role="alert">
+        가입 문의는 동아리 회장에게 전달해 주세요. / 入会咨询请联系社长。
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 한중다리 (韩中桥) Language Exchange Club</p>
+  </footer>
+
+  <!-- 原生 JavaScript 交互逻辑 -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var inquiryBtn = document.getElementById('inquiryBtn');
+      var inquiryMessage = document.getElementById('inquiryMessage');
+
+      inquiryBtn.addEventListener('click', function () {
+        // 点击后显示提示信息
+        inquiryMessage.style.display = 'block';
+        
+        // 确保视图平滑聚焦到提示区域
+        inquiryMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      });
+    });
+  </script>
+</body>
+</html>
+
