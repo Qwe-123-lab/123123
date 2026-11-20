@@ -398,10 +398,11 @@
       var inquiryMessage = document.getElementById('inquiryMessage');
 
       inquiryBtn.addEventListener('click', function () {
-        // 点击后显示提示信息
+        // 1. 弹出系统提示窗口 (Alert Window)
+        alert('가입 문의는 동아리 회장에게 전달해 주세요. / 入会咨询请联系社长。');
+
+        // 2. 同时在页面下方显示提示信息框
         inquiryMessage.style.display = 'block';
-        
-        // 确保视图平滑聚焦到提示区域
         inquiryMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       });
     });
